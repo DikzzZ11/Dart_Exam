@@ -1,3 +1,36 @@
+class Expense {
+  String description;
+  double amount;
+  String category;
+  bool isPaid;
+  DateTime date;
+
+  Expense({
+    required this.description,
+    required this.amount,
+    required this.category,
+    this.isPaid = false,
+    DateTime? date,
+  }) : date = date ?? DateTime.now();
+
+ 
+  bool isMajorExpense() {
+    return amount > 100;
+  }
+
+ 
+  bool isThisMonth() {
+    DateTime now = DateTime.now();
+    return date.year == now.year && date.month == now.month;
+  }
+
+  
+  String getSummary() {
+    return '[${category}] $description - Rp ${amount.toStringAsFixed(2)} '
+           '(${isPaid ? "PAID" : "UNPAID"})';
+  }
+}
+
 class ExpenseManager {
   List<Expense> _expenses = [];
 
@@ -7,7 +40,7 @@ class ExpenseManager {
 
   List<Expense> getAllExpenses() => List.from(_expenses);
 
-  // Filter berdasarkan kategori
+  
   List<Expense> getByCategory(String category) {
     List<Expense> filtered = [];
     for (var expense in _expenses) {
@@ -18,7 +51,7 @@ class ExpenseManager {
     return filtered;
   }
 
-  // Filter berdasarkan rentang jumlah
+  
   List<Expense> getByAmountRange(double min, double max) {
     List<Expense> filtered = [];
     for (var expense in _expenses) {
@@ -29,7 +62,7 @@ class ExpenseManager {
     return filtered;
   }
 
-  // Dapatkan major expenses saja
+
   List<Expense> getMajorExpenses() {
     List<Expense> filtered = [];
     for (var expense in _expenses) {
@@ -40,7 +73,7 @@ class ExpenseManager {
     return filtered;
   }
 
-  // Dapatkan expenses bulan ini
+  
   List<Expense> getThisMonth() {
     List<Expense> filtered = [];
     for (var expense in _expenses) {
@@ -51,7 +84,7 @@ class ExpenseManager {
     return filtered;
   }
 
-  // Dapatkan expenses yang sudah/belum dibayar
+  
   List<Expense> getPaidExpenses() {
     List<Expense> filtered = [];
     for (var expense in _expenses) {

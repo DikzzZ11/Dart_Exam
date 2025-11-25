@@ -1,24 +1,51 @@
+class Expense {
+  final String description;
+  final double amount;
+  final String category;
+
+  Expense({
+    required this.description,
+    required this.amount,
+    required this.category,
+  });
+
+
+  Expense.quick({
+    required String description,
+    required double amount,
+    required String category,
+  }) : this(
+          description: description,
+          amount: amount,
+          category: category,
+        );
+
+  String getSummary() {
+    return '[$category] $description - Rp ${amount.toStringAsFixed(2)}';
+  }
+}
+
 class ExpenseManager {
-  // List private untuk menyimpan semua expenses
+ 
   List<Expense> _expenses = [];
 
-  // Tambah expense
+ 
   void addExpense(Expense expense) {
     _expenses.add(expense);
     print('✅ Ditambahkan: ${expense.description}');
   }
 
-  // Dapatkan semua expenses (return copy untuk melindungi list internal)
+ 
   List<Expense> getAllExpenses() {
     return List.from(_expenses);
   }
 
-  // Dapatkan total jumlah expenses
+ 
   int getCount() {
     return _expenses.length;
   }
 
-  // Hitung total pengeluaran
+ 
   double getTotalSpending() {
     double total = 0;
     for (var expense in _expenses) {
@@ -27,7 +54,7 @@ class ExpenseManager {
     return total;
   }
 
-  // Print ringkasan sederhana
+  
   void printSummary() {
     print('\n💰 RINGKASAN PENGELUARAN');
     print('Total expenses: ${getCount()}');
