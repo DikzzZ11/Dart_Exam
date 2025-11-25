@@ -18,12 +18,12 @@ class User {
     }
   }
 
-  // Getter
+  
   String get name => _name;
   String get email => _email;
   int get age => _age;
 
-  // Computed getter
+ 
   bool get isAdult => _age >= 18;
 
   String get kategoriUsia {
@@ -34,7 +34,7 @@ class User {
 
   String get displayName => '$_name ($kategoriUsia, $_age)';
 
-  // Setter dengan validasi
+
   set email(String value) {
     if (!value.contains('@')) {
       throw Exception('Format email tidak valid');

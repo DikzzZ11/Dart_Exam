@@ -7,7 +7,7 @@ class Expense {
 
   Expense(this.description, this.amount, this.category, this.date, {this.notes});
 
-  // Constructor split bill
+ 
   Expense.splitBill(
     String desc,
     double totalAmount,
@@ -18,7 +18,7 @@ class Expense {
       date = DateTime.now(),
       notes = 'Patungan dengan $people orang';
 
-  // Constructor kalkulator tip
+ 
   Expense.tip(
     String desc,
     double baseAmount,
@@ -29,7 +29,7 @@ class Expense {
       date = DateTime.now(),
       notes = 'Termasuk tip ${tipPercent}%';
 
-  // Constructor expense berulang
+ 
   Expense.recurring(
     this.description,
     this.amount,
